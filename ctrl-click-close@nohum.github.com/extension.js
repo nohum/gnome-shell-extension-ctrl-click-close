@@ -1,5 +1,5 @@
 /**
- * Middle click closes windows in window overview.
+ * CTRL+Click closes windows in window overview.
  *
  * by Wolfgang Gaar
  * http://github.com/nohum/gnome-shell-extension-middle-click-overview
