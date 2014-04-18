@@ -17,15 +17,17 @@ let connectedWindowOverlaySignals;
 
 // original source of this function: see https://git.gnome.org/browse/gnome-shell-extensions/tree/extensions/windowsNavigator/extension.js?h=gnome-3-10#n11
 function injectToFunction(parent, name, func) {
-    let origin = parent[name];
-    parent[name] = function() {
-        let ret;
-        ret = origin.apply(this, arguments);
-        if (ret === undefined)
-            ret = func.apply(this, arguments);
-        return ret;
-    }
-    return origin;
+	let origin = parent[name];
+	
+	parent[name] = function() {
+		let ret;
+		ret = origin.apply(this, arguments);
+		if (ret === undefined)
+		ret = func.apply(this, arguments);
+		return ret;
+	}
+
+	return origin;
 }
 
 function init() {
@@ -76,7 +78,6 @@ function enable() {
 }
 
 function disable() {
-
 	if (originalWindowCloneInit !== undefined) {
 		Workspace.WindowClone.prototype['_init'] = originalWindowCloneInit;
 	}

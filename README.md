@@ -1,4 +1,6 @@
-gnome-shell-extension-ctrl-click-close
-======================================
+CTRL+Click for closing windows in overview
+==========================================
 
-Gnome Shell extension to make closing windows in the workspace overview more comfortable
+With this extension a CTRL+Click onto a window in the workspace overview closes that window.
+
+Runs on Gnome 3.10 and 3.12
