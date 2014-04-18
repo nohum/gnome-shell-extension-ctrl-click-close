@@ -1,0 +1,9 @@
+{
+	"shell-version": [
+		"3.10", "3.12"
+	],
+	"uuid": "ctrl-click-close@nohum.github.com",
+	"name": "Close windows in overview with CTRL+Click",
+	"description": "With this extension a CTRL+Click onto a window in the workspace overview closes that window.",
+	"url": "https://github.com/nohum/gnome-shell-extension-ctrl-click-close"
+}
