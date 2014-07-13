@@ -1,7 +1,7 @@
 /**
  * CTRL+Click closes windows in window overview.
  * 
- * Version 1.0.1
+ * Version 1.0.2
  *
  * by Wolfgang Gaar
  * http://github.com/nohum/gnome-shell-extension-middle-click-overview
