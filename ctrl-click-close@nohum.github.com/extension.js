@@ -11,8 +11,9 @@ const Clutter = imports.gi.Clutter;
 const Shell = imports.gi.Shell;
 const Lang = imports.lang;
 const Workspace = imports.ui.workspace;
+const St = imports.gi.St;
 
-let originalWindowCloneInit;
+let originalWindowCloneClicked;
 let originalWindowOverlayInit;
 let connectedWindowOverlaySignals;
 
@@ -36,19 +37,14 @@ function init() {
 }
 
 function enable() {
-	originalWindowCloneClicked = undefined;
-	originalWindowOverlayInit = undefined;
 	connectedWindowOverlaySignals = [];
 
-	originalWindowCloneClicked = injectToFunction(Workspace.WindowClone.prototype, '_onClicked', function(action, actor) {		
+	originalWindowCloneClicked = injectToFunction(Workspace.WindowClone.prototype, '_onClicked', function(action, actor, used_mouse_button) {		
 		let event = Clutter.get_current_event();
-		if (event.get_state() & Clutter.ModifierType.CONTROL_MASK) {
+		if (used_mouse_button == 2 || event.get_state() & Clutter.ModifierType.CONTROL_MASK) {
 			this.emit('close-requested');
 			return;
 		}
-
-		// this is going to throw a warning at injection-time as at this point that variable is not refering to the original function yet.
-		originalWindowCloneClicked._onClicked(action, actor);
 	});
 
 	originalWindowOverlayInit = injectToFunction(Workspace.WindowOverlay.prototype, '_init', function(windowClone, parentActor) {
